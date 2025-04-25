@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practice todolist</title>
+</head>
+
+<body>
+  <style>
+    
+    body {
+      padding-top: 50px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      margin: 10px;
+    }
+    input {
+      height: 38px;
+      width: 250px;
+      margin: 5px;
+      padding-left: 20px;
+      border: 2px solid grey;
+    border-radius: 30px;
+    }
+    
+    .btn {
+        padding-top: 20px;
+    }
+    button {
+      padding: 10px;
+      border-radius: 5px;
+    }
+    li {
+      margin: 20px;
+    }
+    
+    .remove-Btn {
+      margin-left: 20px;
+      background-color: red;
+      color: whitesmoke;
+      padding: 5px 10px;
+    }
+   
+    .TaskList {
+       
+    }
+  </style>
+  
+  
+  
+  
+        <h1>To-do List</h1>
+    <div class="input"><input type="text" size="30" id="TaskInput" placeholder="Enter a task"></div>
+    <div class="btn"><button onclick="addTask()">Add task</button></div>
+    <div id="TaskList"></div>
+    <script>
+      function addTask() {
+        const TaskInput = document.getElementById('TaskInput');
+        
+        const TaskList = document.getElementById('TaskList');
+       
+       if (TaskInput.value.trim() === "") {
+         alert("Please enter a task!")
+         return;
+       }
+       const li = document.createElement("li");
+       li.textContent = TaskInput.value;
+       
+       const removeBtn = document.createElement('button');
+       
+       removeBtn.textContent = "Remove";
+       removeBtn.className = "remove-Btn";
+       removeBtn.onclick = () => TaskList.removeChild(li);
+       
+       li.appendChild(removeBtn);
+       TaskList.appendChild(li);
+       TaskInput.value = "";
+      }
+    </script>
+</body>
+
+</html>
